@@ -2,7 +2,7 @@ import React from 'react'
 import { cookies } from 'next/headers';
 import Admin from '../admin/page';
 import Customer from '../customer/page';
-
+import Logout from '@/app/logout/page';
 const decodeJwt = (token) => {
   try {
     const base64Url = token.split('.')[1];
@@ -23,7 +23,7 @@ const page = () => {
 
   return (
     <div>
-        <a href='/login'>login</a>
+        <Logout/>
         {isadmin ? <Admin/>: <Customer/>}
     </div>
   )

@@ -12,6 +12,7 @@
 import { Cinzel } from 'next/font/google';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
+import { logoutAction } from '../serveractions/logoutAction';
 
 // --- Helper function to decode JWT ---
 // (It's good practice to keep this consistent across components)
@@ -88,9 +89,9 @@ const UserNavBar = async () => {
             </>
           )}
           {/* Logout Button */}
-          <Link href={'/logout'} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+          <button onClick={logoutAction} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
             Logout
-          </Link>
+          </button>
         </div>
       </nav>
     </header>

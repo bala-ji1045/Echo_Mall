@@ -3,6 +3,7 @@ import React from 'react';
 
 import UserNavBar from '../Components/UserNavBar';
 import { cookies } from 'next/headers';
+import AdminSidebar from '../Components/AdminSidebar';
 
 const decodeJwt = (token) => {
   try {
@@ -21,12 +22,15 @@ const LayoutSelector = ({ children }) => {
   const token = cookieStore.get('jwt_token')?.value; // Changed from 'authToken' to 'jwt_token'
   const userData = token ? decodeJwt(token) : null;
   const isAuthenticated = !!userData;
+  const isAdmin = userData?.isAdmin || false;
 
   return (
     <>
     
       {isAuthenticated ? <UserNavBar /> : null}
-      <main style={{ marginTop: '30px' }}>{children}</main>
+      {isAuthenticated&&isAdmin&&(<div style={{ marginTop: '80px', marginLeft:'0px',marginRight:'0px' }}><AdminSidebar/></div>)}
+      
+      <main style={{ marginTop: '-45px',marginLeft:'200px' }}>{children}</main>
     </>
   );
 };

@@ -23,7 +23,6 @@ const page = () => {
 
   return (
     <div>
-        <Logout/>
         {isadmin ? <Admin/>: <Customer/>}
     </div>
   )
